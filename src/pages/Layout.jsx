@@ -1,10 +1,11 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Home, User as UserIcon, Trophy, ShoppingBag, Gamepad2, Calendar, Users } from "lucide-react";
 import { User } from "@/api/entities";
 import { motion, AnimatePresence } from "framer-motion";
+
+
 
 const navItems = [
   { name: "Home", icon: Home, page: "Home" },
@@ -36,8 +37,7 @@ export default function Layout({ children, currentPageName }) {
   useEffect(() => {
     const initNotifications = async () => {
       try {
-        const { createServiceWorker } = await import('./components/notifications/ServiceWorker');
-        await createServiceWorker();
+        const { createServiceWorker } = await import('../components/notifications/ServiceWorker.jsx');        await createServiceWorker();
       } catch (error) {
         console.log('Notification service worker not available:', error);
         // Continue without service worker
